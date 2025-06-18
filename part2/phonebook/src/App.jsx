@@ -38,7 +38,11 @@ function App() {
         setPerson(initialPerson)
         setFilteredPerson(initialPerson)
       })
+      .catch(error => {
+        console.log(error.response.data.error)
+      })
   }, [])
+
   console.log('render', person.length, 'persons')
   console.log(person)
   console.log('render', filteredPerson.length, 'persons')
@@ -91,6 +95,8 @@ function App() {
       .catch(error => {
         console.log(error)
         alert("Error: " + error.response.data.error)
+        setErrorMessage(error.response.data.error)
+        console.log(error.response.data.error)
       })
     setErrorMessage(`Added ${newName}`)
     setErrorDanger(false)
